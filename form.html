@@ -1,0 +1,30 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shopping Cart</title>
+</head>
+<body>
+  <h2>Shopping Cart</h2>
+  <form id="cart-form">
+    <label>Product Name: </label>
+    <input type="text" id="product-name" placeholder="Product Name" required><br><br>
+    <label>Price: </label>
+    <input type="number" id="product-price" placeholder="Price" required onchange="updateTotal()"><br><br>
+    <label>Quantity: </label>
+    <input type="number" id="product-quantity" placeholder="Quantity" required oninput="updateTotal()"><br><br>
+  </form>
+  <ul id="product-list"></ul>
+  <div id="total">Total: ₹0.00</div>
+  <script>
+    function updateTotal() {
+      const price = parseFloat(document.getElementById('product-price').value) || 0;
+      const quantity = parseInt(document.getElementById('product-quantity').value) || 0;
+      const total = price * quantity;
+      document.getElementById('total').textContent = `Total: ₹${total.toFixed(2)}`;
+    }
+  </script>
+</body>
+</html>
